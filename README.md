@@ -19,9 +19,7 @@ pip install pandas requests beautifulsoup4 mysql-connector-python
 
 Para ejecutar el proyecto, sigue estos pasos:
 
-1. Ejecuta todo el código presente en el notebook main.ipynb. Esto iniciará el proceso de web scraping y almacenará los datos en tu base de datos MySQL.
-
-2. Rellena la información presente en la primera celda.
+1. Rellena la información presente en la primera celda del archivo `main.ipynb`
 
 ```python
 # Datos de conexión a MySQL
@@ -32,9 +30,13 @@ database = "example"
 
 # Nombre de la tabla para guardar los datos de las comunas
 tabla_comunas = 'datoscomuna'
-# Por defecto la tabla de "Indicadores" tendrá ese nombre.
+# Por defecto la tabla de "indicadores" tendrá ese nombre.
 ```
-## Describir cada una de las tablas
+
+2. Ejecuta todo el código presente en el notebook main.ipynb. Esto iniciará el proceso de web scraping y almacenará los datos en tu base de datos MySQL.
+
+
+## Tablas
 ### Descripción de Campos de la Tabla `tabla_comunas`
 
 #### `idcom` 
@@ -86,7 +88,7 @@ tabla_comunas = 'datoscomuna'
 - **Descripción:** La combinación de `idcom` y `Anno` se utiliza como llave primaria para garantizar la unicidad de cada registro.
 
 
-## Descripción de la Tabla `indicadores`
+### Descripción de la Tabla `indicadores`
 
 #### `idcom`
 - **Tipo de Dato:** INT
@@ -118,7 +120,8 @@ tabla_comunas = 'datoscomuna'
 
 #### `table_header`
 - **Tipo de Dato:** TEXT
-- **Descripción:** Encabezado específico de la tabla, posiblemente incluyendo títulos o etiquetas HTML. Para este caso, la información se encuentra almacenada en arreglos según su rowspan y colspan asociado. Por defecto, el primer valor del arreglo tendra un rowspan = 2 y colspan = '', mientras que los demas al tener un rowspan = '' y colspan = valor_num tendran subarreglos que representaran los conjuntos de informacion que proporciona los tr y th. 
+- **Descripción**: Encabezado específico de la tabla, posiblemente incluyendo títulos o etiquetas HTML. Para este caso, la información se encuentra almacenada en arreglos según su rowspan y colspan asociado. Por defecto, el primer valor del arreglo tendrá un rowspan = 2 y colspan = '', mientras que los demás al tener un rowspan = '' y colspan = valor_num tendrán subarreglos que representarán los conjuntos de información que proporcionan los tr y th.
+
 ![imagen de referencia](./img/table_header.png)
 
 #### `Subtitulos`
@@ -143,8 +146,9 @@ tabla_comunas = 'datoscomuna'
 La carpeta `code-laravel` contiene tres subcarpetas `controller`, `models` y `routes`. En estas carpetas se encuentran los codigo asociados que generan la API.
 
 #### 1) Consulta 1
-La primera ruta permite obtener la información de una comuna y año en especifico.
-Por ejemplo, para la comuna con CUT 9101 (Temuco) y el año 2023, se obtiene la siguiente información.
+La primera ruta permite obtener la información de una comuna y año específico.
+Por ejemplo, para la comuna con CUT 9101 (Temuco) y el año 2023, se obtiene la siguiente información:
+
 ![api_1](./img/api_1.PNG)
 
 ![api_2](./img/api_2.PNG)
@@ -155,15 +159,41 @@ Esta informacion corresponde a la siguiente tabla https://www.bcn.cl/siit/report
 
 
 #### 2) Consulta 2
-La segunda ruta permite obtener la información de una comuna y año en especifico pero agregando la informacion de sus indicadores. Para ello es necesario agregar en la url la palabra indicadores. Por ejemplo
+La segunda ruta permite obtener la información de una comuna y año específico, pero agregando la información de sus indicadores. Para ello, es necesario agregar en la URL la palabra `indicadores`. Por ejemplo:
 
-![ruta_api_4](ruta_api_4.png)
+![ruta api 4](./img/ruta_api_4.PNG)
 
 ![api_3](./img/api_3.PNG)
 
-Cada indicador que aparece en la imagen anterior contiene información, por ejemplo: 
+Cada indicador que aparece en la imagen anterior contiene la información descrita en las tablas, por ejemplo:
 
 ![api_4](./img/api_4.PNG)
 
 
+## Db
+
+En el repositorio se encuentra una carpeta llamada `db`, en ella se encuentra la db `datos_bcn.sql` para ser descargada.
+
 ## Problemas
+
+-  La obtención de los datos no es trivial; por ejemplo, obtener los encabezados de cada tabla presenta inconsistencias que dificultan la recreación de las tablas.
+
+Ver diferencias
+
+![header_0](./img/header_0.PNG)
+
+![header_0](./img/header_1.PNG)
+
+-  El problema anterior genera otro problema, el cual es, generar los graficos. Por ejemplo, si uno quiere graficar debe tener los datos y eso es correcto, pero en este caso no se grafican todos los datos, aqui se grafica solo la ultima columna.
+
+![barra1](./img/barra1.PNG)
+
+Y en el segundo grafico vemos como se grafican dos columnas
+
+![barra2](./img/barra2.PNG)
+
+html asociado: 
+
+![canvas](./img/canvas.PNG)
+
+El principal inconveniente es que el código HTML de la página web **no** proporciona información sobre qué columna de datos se utilizará para los gráficos, lo que conduce a inconsistencias. Además, no es posible obtener el título del gráfico, ya que se presenta como una imagen. Por el momento, la única solución que he encontrado es determinar manualmente qué se desea graficar y realizarlo a mano.
