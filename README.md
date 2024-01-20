@@ -19,7 +19,9 @@ pip install pandas requests beautifulsoup4 mysql-connector-python
 
 Para ejecutar el proyecto, sigue estos pasos:
 
-1. Rellena la información presente en la primera celda del archivo `main.ipynb`
+1. Descarga todos los archivos de la carpeta code
+
+2. Rellena la información presente en la primera celda del archivo `main.ipynb`
 
 ```python
 # Datos de conexión a MySQL
@@ -33,7 +35,7 @@ tabla_comunas = 'datoscomuna'
 # Por defecto la tabla de "indicadores" tendrá ese nombre.
 ```
 
-2. Ejecuta todo el código presente en el notebook main.ipynb. Esto iniciará el proceso de web scraping y almacenará los datos en tu base de datos MySQL.
+3. Ejecuta todo el código presente en el notebook main.ipynb. Esto iniciará el proceso de web scraping y almacenará los datos en tu base de datos MySQL.
 
 
 ## Tablas
