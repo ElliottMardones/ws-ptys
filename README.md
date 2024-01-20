@@ -146,14 +146,14 @@ tabla_comunas = 'datoscomuna'
 La carpeta `code-laravel` contiene tres subcarpetas `controller`, `models` y `routes`. En estas carpetas se encuentran los codigo asociados que generan la API.
 
 #### 1) Consulta 1
-La primera ruta permite obtener la información de una comuna y año específico.
+La primera consulta permite obtener la información de una comuna y año específico.
 Por ejemplo, para la comuna con CUT 9101 (Temuco) y el año 2023, se obtiene la siguiente información:
 
 ![api_1](./img/api_1.PNG)
 
 ![api_2](./img/api_2.PNG)
 
-Esta informacion corresponde a la siguiente tabla https://www.bcn.cl/siit/reportescomunales/comunas_v.html?anno=2023&idcom=9101: 
+Esta información corresponde a la siguiente tabla https://www.bcn.cl/siit/reportescomunales/comunas_v.html?anno=2023&idcom=9101: 
 
 ![bcnapi_2](./img/bcnapi_2.PNG)
 
@@ -188,7 +188,7 @@ Ver diferencias
 
 ![barra1](./img/barra1.PNG)
 
-Y en el segundo grafico vemos como se grafican dos columnas
+En el segundo gráfico, observamos cómo se representan gráficamente dos columnas.
 
 ![barra2](./img/barra2.PNG)
 
@@ -197,3 +197,9 @@ html asociado:
 ![canvas](./img/canvas.PNG)
 
 El principal inconveniente es que el código HTML de la página web **no** proporciona información sobre qué columna de datos se utilizará para los gráficos, lo que conduce a inconsistencias. Además, no es posible obtener el título del gráfico, ya que se presenta como una imagen. Por el momento, la única solución que he encontrado es determinar manualmente qué se desea graficar y realizarlo a mano.
+
+## Recomendaciones
+
+
+Como recomendación y considerando los tiempos, sugiero utilizar los datos almacenados directamente en HTML. Esto permitirá generar las tablas de manera dinámica, resultando en una representación que será exactamente igual a la de la página del Congreso Nacional.
+El tema de los gráficos debe ser analizado.
