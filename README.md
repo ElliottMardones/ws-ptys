@@ -157,7 +157,7 @@ Esta informacion corresponde a la siguiente tabla https://www.bcn.cl/siit/report
 #### 2) Consulta 2
 La segunda ruta permite obtener la información de una comuna y año en especifico pero agregando la informacion de sus indicadores. Para ello es necesario agregar en la url la palabra indicadores. Por ejemplo
 
-![Alt text](image.png)
+![ruta_api_4](ruta_api_4.png)
 
 ![api_3](./img/api_3.PNG)
 
