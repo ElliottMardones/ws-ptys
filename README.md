@@ -201,5 +201,5 @@ El principal inconveniente es que el código HTML de la página web **no** propo
 ## Recomendaciones
 
 
-Como recomendación y considerando los tiempos, sugiero utilizar los datos almacenados directamente en HTML en la tabla indicadores campo Tabla. Esto permitirá generar las tablas de manera dinámica, resultando en una representación que será exactamente igual a la de la página del Congreso Nacional.
+Como recomendación y considerando los tiempos, sugiero utilizar los datos almacenados directamente en HTML en la tabla `indicadores` campo `Tabla`. Esto permitirá generar las tablas de manera dinámica, resultando en una representación que será exactamente igual a la de la página del Congreso Nacional.
 El tema de los gráficos debe ser analizado.
